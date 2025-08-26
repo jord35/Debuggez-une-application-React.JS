@@ -40,6 +40,7 @@ const EventList = () => {
       ) : (
         <>
           <h3 className="SelectTitle">Catégories</h3>
+          {/* verifier select */}
           <Select
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
