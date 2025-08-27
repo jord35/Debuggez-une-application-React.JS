@@ -12,7 +12,7 @@ const Slider = () => {
 
 
   const byDateDesc = data?.focus ? [...data.focus].sort((evtA, evtB) =>
-    new Date(evtB.date) - new Date(evtA.date) // tri décroissant
+    new Date(evtB.date) - new Date(evtA.date) // tri decroissant
   ) : [];
 
 
