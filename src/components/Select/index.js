@@ -15,10 +15,12 @@ const Select = ({
 }) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+  // Correction : newValue n’était pas transmis correctement à onChange (mauvaise utilisation de la prop côté enfant, donc la donnée ne remontait pas au parent)
+  // et setCollapsed attendait un booléen, pas une string
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
