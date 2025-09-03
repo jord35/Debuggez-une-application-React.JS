@@ -12,7 +12,7 @@ const Slider = () => {
 
 
   const byDateDesc = data?.focus ? [...data.focus].sort((evtA, evtB) =>
-    new Date(evtB.date) - new Date(evtA.date) // tri decroissant
+    new Date(evtA.date) - new Date(evtB.date) // tri croissant
   ) : [];
 
 
@@ -34,8 +34,8 @@ const Slider = () => {
     <div className="SlideCardList">
       {byDateDesc.map((event, idx) => {
         const key = event.id ?? `${event.title}-${idx}`; // clé unique (modifier en supr event.title pour utilisé juste idx?  )
-        console.log("Clé utilisée pour SlideCard :", key);
-        console.log("------------------", idx);
+        // console.log("Clé utilisée pour SlideCard :", key);
+        // console.log("------------------", idx);
 
 
         return (

@@ -106,6 +106,12 @@ describe("When Events is created", () => {
 
       await screen.findByText("24-25-26 Février");
       await screen.findByText("1 site web dédié");
+
+
+      const image = screen.getByAltText("Conférence #productCON");
+      expect(image).toBeInTheDocument();
+      expect(image.src).toContain("/images/stem-list-EVgsAbL51Rk-unsplash.png");
+
     });
   });
 });
