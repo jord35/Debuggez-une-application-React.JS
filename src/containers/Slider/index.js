@@ -41,7 +41,8 @@ const Slider = () => {
         return (
           <React.Fragment key={key}>
             {/* Carte */}
-            <div className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}>
+            {/* ad data-testid for integration test  */}
+            <div data-testid='event-render' className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}>
               <img src={event.cover ?? "default.jpg"} alt={event.title ?? "événement"} />
               <div className="SlideCard__descriptionContainer">
                 <div className="SlideCard__description">

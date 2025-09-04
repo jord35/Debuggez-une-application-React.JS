@@ -1,5 +1,10 @@
+/**
+ * @jest-environment jsdom
+ */
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
+import * as DataContext from "../../contexts/DataContext";
+
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -29,16 +34,46 @@ describe("When Form is created", () => {
 
 
 describe("When a page is created", () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
   it("a list of events is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+
+    const eventList = screen.getByTestId("event-render");
+    expect(eventList).toBeInTheDocument();
+  });
+
+
   it("a list a people is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+    const peopleList = screen.getByTestId("people-render");
+    expect(peopleList).toBeInTheDocument();
+  });
+
+
   it("a footer is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+    const footerList = screen.getByTestId("footer-render");
+    expect(footerList).toBeInTheDocument();
+  });
+
+
   it("an event card, with the last event, is displayed", () => {
-    // to implement
+    // Mock du hook useData pour fournir `last`
+    jest.spyOn(DataContext, "useData").mockReturnValue({
+      last: {
+        cover: "cover.png",
+        title: "Dernier Event",
+        date: new Date("2025-09-04"),
+        type: "Soirée"
+      }
+    });
+
+    render(<Home />);
+
+    const lastEventCard = screen.getByTestId("card-testid");
+    expect(lastEventCard).toBeInTheDocument();
   })
 });
